@@ -1,0 +1,36 @@
+{
+    "favicons": [
+        {
+            "id": 0,
+            "year": 2022,
+            "colorName": "Very Peri",
+            "fill": "#6667AB",
+            "words": "The colour I am using.",
+            "likes": 30
+        },
+        {
+            "id": 1,
+            "year": 2021,
+            "colorName": "Ultimate Gray",
+            "fill": "#939597",
+            "words": "The colour you see first when this page is finish loading.",
+            "likes": 2
+        },
+        {
+            "id": 2,
+            "year": 2020,
+            "colorName": "Classic Blue",
+            "fill": "#0F4C81",
+            "words": "The colour I used at first.",
+            "likes": 3
+        },
+        {
+            "id": 3,
+            "year": 2008,
+            "colorName": "Chinese Red",
+            "fill": "#E60000",
+            "words": "The colour I will use in the spring festival.",
+            "likes": 8
+        }
+    ]
+}
