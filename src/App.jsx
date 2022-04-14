@@ -17,7 +17,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PropTypes from 'prop-types';
-import ListItem from '@mui/material/ListItem';
 import Collapse from '@mui/material/Collapse';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -40,6 +39,7 @@ import PermDataSettingIcon from '@mui/icons-material/PermDataSetting';
 import {
   Link as RouterLink,
   MemoryRouter,
+  useLocation,
 } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 
@@ -149,7 +149,7 @@ export default function MiniDrawer() {
   };
 
   function ListItemLink(props) {
-    const { icon, primary, to } = props;
+    const { icon, primary, to, disabled } = props;
 
     const renderLink = React.useMemo(
       () =>
@@ -161,10 +161,10 @@ export default function MiniDrawer() {
 
     return (
       <li>
-        <ListItem button component={renderLink}>
+        <ListItemButton component={renderLink} disabled={disabled}>
           {icon ? <ListItemIcon sx={{ px: 0 }}>{icon}</ListItemIcon> : null}
           <ListItemText primary={primary} />
-        </ListItem>
+        </ListItemButton>
       </li>
     );
   }
@@ -210,20 +210,20 @@ export default function MiniDrawer() {
             <ListItemLink to="/" primary="Home" icon={<ChairIcon />} />
             <ListItemButton onClick={() => { setAvatarsOpen(!avatarsOpen) }}>
               <ListItemIcon>
-                <FaceRetouchingNaturalIcon />
+                <AddReactionIcon />
               </ListItemIcon>
               <ListItemText primary="Avatars" />
               {avatarsOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={avatarsOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-avatars-darkmode.vercel.app/" rel="noopener noreferrer">
                   <ListItemIcon>
                     <BedtimeIcon />
                   </ListItemIcon>
                   <ListItemText primary="DarkMode" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-avatars-lightmode.onrender.com/" rel="noopener noreferrer">
                   <ListItemIcon>
                     <LightModeIcon />
                   </ListItemIcon>
@@ -233,12 +233,12 @@ export default function MiniDrawer() {
                   <ListItemIcon>
                     <FolderZipIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Avatars-JSON" />
+                  <ListItemText primary="JSON" />
                   {avatarsJsonOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={avatarsJsonOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 6 }} component="a" href="http://my-json-server.typicode.com/Eddie-He-090/avatars-json" target="_blank" rel="noopener noreferrer">
+                    <ListItemButton sx={{ pl: 6 }} component="a" href="https://my-json-server.typicode.com/eddiehe49/avatars-json/" target="_blank" rel="noopener noreferrer">
                       <ListItemIcon>
                         <DataObjectIcon />
                       </ListItemIcon>
@@ -250,26 +250,26 @@ export default function MiniDrawer() {
             </Collapse>
             <ListItemButton onClick={() => { setFaviconsOpen(!faviconsOpen) }}>
               <ListItemIcon>
-                <AddReactionIcon />
+                <FaceRetouchingNaturalIcon />
               </ListItemIcon>
               <ListItemText primary="Favicons" />
               {faviconsOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={faviconsOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons.vercel.app/" rel="noopener noreferrer" disabled={useLocation().pathname === "/" ? "true" : null}>
                   <ListItemIcon>
                     <Brightness4Icon />
                   </ListItemIcon>
                   <ListItemText primary="Auto" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons-darkmode.vercel.app/" rel="noopener noreferrer">
                   <ListItemIcon>
                     <Brightness2Icon />
                   </ListItemIcon>
                   <ListItemText primary="DarkMode" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons-lightmode.onrender.com/" rel="noopener noreferrer">
                   <ListItemIcon>
                     <BrightnessHighIcon />
                   </ListItemIcon>
@@ -279,7 +279,7 @@ export default function MiniDrawer() {
                   <ListItemIcon>
                     <SavingsIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Favicons-JSON" />
+                  <ListItemText primary="JSON" />
                   {faviconsJsonOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={faviconsJsonOpen} timeout="auto" unmountOnExit>
@@ -294,7 +294,7 @@ export default function MiniDrawer() {
                 </Collapse>
               </List>
             </Collapse>
-            <ListItemLink to="/about" primary="About" icon={<SignLanguageIcon />} />
+            <ListItemLink to="/about" primary="About" icon={<SignLanguageIcon />} disabled={useLocation().pathname === "/about" ? true : false} />
           </List>
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

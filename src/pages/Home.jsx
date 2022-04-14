@@ -45,8 +45,8 @@ function Home(params) {
     if (selectValue === 1) {
       setIconName("CircularProgress")
       setDialogOpen(false)
-      patchJsonplaceholderFavicons()
-      // putJsonbinFavicons()
+      // patchJsonplaceholderFavicons()
+      putJsonbinFavicons()
       // putKratesFavicons()
     }
     else {
@@ -167,8 +167,8 @@ function Home(params) {
 
   useEffect(() => {
     setIconName("CircularProgress")
-    getJsonplaceholderFavicons()
-    // getJsonbinFavicons()
+    // getJsonplaceholderFavicons()
+    getJsonbinFavicons()
     // getKratesFavicons()
   }, [])
 
