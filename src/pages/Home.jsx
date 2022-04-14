@@ -41,19 +41,6 @@ function Home(params) {
     setIndex(e.target.id)
   }
 
-  const confirmVarification = () => {
-    if (selectValue === 1) {
-      setIconName("CircularProgress")
-      setDialogOpen(false)
-      // patchJsonplaceholderFavicons()
-      putJsonbinFavicons()
-      // putKratesFavicons()
-    }
-    else {
-      enqueueSnackbar('Wrong verification code!', { variant: "warning" });
-    }
-  }
-
   const getJsonplaceholderFavicons = () => {
     const getFavicons = async () => {
       let result = await Service.getJsonplaceholderFaviconsJson()
@@ -165,11 +152,24 @@ function Home(params) {
       });
   };
 
+  const confirmVarification = () => {
+    if (selectValue === 1) {
+      setIconName("CircularProgress")
+      setDialogOpen(false)
+      // patchJsonplaceholderFavicons()
+      // putJsonbinFavicons()
+      putKratesFavicons()
+    }
+    else {
+      enqueueSnackbar('Wrong verification code!', { variant: "warning" });
+    }
+  }
+
   useEffect(() => {
     setIconName("CircularProgress")
     // getJsonplaceholderFavicons()
-    getJsonbinFavicons()
-    // getKratesFavicons()
+    // getJsonbinFavicons()
+    getKratesFavicons()
   }, [])
 
 
