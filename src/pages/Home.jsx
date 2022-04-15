@@ -176,9 +176,9 @@ function Home(params) {
   return (
     < div className="App" >
       <header className="App-header">
-        <div style={{ width: "100%", paddingTop: "0%" }}>
+        <div style={{ width: "100%", marginTop: "2%" }}>
           <div style={{ width: "37.5%", float: "left", }}>
-            <p className="leftWords" style={{ fontSize: "calc(20% + 2vmin)" }}>
+            <p className="leftWords">
               {localFavicons ? localFavicons[index].words : null}
             </p>
           </div>
@@ -191,8 +191,8 @@ function Home(params) {
             </svg>
           </div>
           <div style={{ width: "37.5%", float: "left", }}>
-            <p className="rightWords" style={{ textAlign: "left", fontSize: "calc(20% + 2vmin)" }}>
-              <code style={{ fontSize: "calc(20% + 2vmin)" }}>{localFavicons ? localFavicons[index].likes : null}</code> folks like this avatar.
+            <p className="rightWords">
+              <code>{localFavicons ? localFavicons[index].likes : null}</code> folks like this avatar.
             </p>
           </div>
         </div>
@@ -213,7 +213,7 @@ function Home(params) {
             {localFavicons ? localFavicons.map((localFavicon) => (<Paper style={{ backgroundColor: localFavicon.fill, cursor: "pointer" }} key={localFavicon.id} id={localFavicon.id} onClick={paperClick}>{localFavicon.colorName}</Paper>)) : null}
           </Box>
         </div>
-        <div style={{ paddingTop: "0%", clear: "both" }}>
+        <div style={{ clear: "both", marginTop: "2%", marginBottom: "2%" }}>
           {localFavicons && iconName === "FavoriteBorder" ? <Tooltip title="Click Me!" arrow><FavoriteBorderOutlinedIcon sx={{ fontSize: 50 }} style={{ cursor: "pointer" }} onClick={() => { setDialogOpen(true) }} /></Tooltip> : null}
           {iconName === "Favorite" ? <FavoriteIcon sx={{ fontSize: 50 }} /> : null}
           {iconName === "CircularProgress" ? <CircularProgress /> : null}

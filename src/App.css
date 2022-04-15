@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height      : 88vh;
+  min-height      : 100vh;
   display         : flex;
   flex-direction  : column;
   align-items     : center;
@@ -45,11 +45,8 @@ code {
 }
 
 .leftWords {
-  word-break     : normal;
-  white-space    : pre-warp;
-  word-wrap      : break-word;
+  padding-left   : 15%;
   padding-right  : 5%;
-  align-items    : right;
   justify-content: right;
   text-align     : right;
   display        : flex;
@@ -60,32 +57,19 @@ code {
 }
 
 .rightWords {
-  padding-left      : 5%;
-  align-items       : left;
-  justify-content   : left;
-  text-align        : left;
-  /* display        : flex; */
-  margin            : 0 auto;
-  margin-top        : 30%;
-  vertical-align    : middle;
+  padding-left   : 5%;
+  justify-content: left;
+  text-align     : left;
+  margin         : 0 auto;
+  margin-top     : 30%;
+  vertical-align : middle;
 }
 
 .cardHolder {
-  padding-top      : 1%;
-  width            : 60%;
-  height           : 200px;
-  /* white-space   : nowrap; */
-  overflow         : hidden;
-  overflow-x       : auto;
-  overflow-y       : auto;
-}
-
-.card {
-  width             : 40%;
-  /* padding-left   : 30%; */
-  display           : inline-block;
-  color             : white;
-  align-items       : center;
-  justify-content   : center;
-  text-align        : center;
+  padding-top: 1%;
+  width      : 60%;
+  height     : 200px;
+  overflow   : hidden;
+  overflow-x : auto;
+  overflow-y : auto;
 }
