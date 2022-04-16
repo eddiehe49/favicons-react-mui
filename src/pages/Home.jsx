@@ -172,15 +172,13 @@ function Home(params) {
     getKratesFavicons()
   }, [])
 
-
   return (
     < div className="App" >
       <header className="App-header">
         <div style={{ width: "100%", marginTop: "2%" }}>
           <div style={{ width: "37.5%", float: "left", }}>
-            <p className="leftWords">
-              {localFavicons ? localFavicons[index].words : null}
-            </p>
+            {localFavicons ? <p className="leftWords" dangerouslySetInnerHTML={{ __html: localFavicons[index].words }}>
+            </p> : <p className="leftWords"><strong>Hold on please.</strong></p>}
           </div>
           <div style={{ width: "25%", float: "left", }}>
             <svg t="1647569900856" className="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -191,9 +189,9 @@ function Home(params) {
             </svg>
           </div>
           <div style={{ width: "37.5%", float: "left", }}>
-            <p className="rightWords">
-              <code>{localFavicons ? localFavicons[index].likes : null}</code> folks like this avatar.
-            </p>
+            {localFavicons ? <p className="rightWords">
+              <code> {localFavicons[index].likes}</code> folks like this avatar.
+            </p> : <p className="rightWords"><strong>...</strong></p>}
           </div>
         </div>
 

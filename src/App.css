@@ -49,11 +49,14 @@ code {
   padding-right  : 5%;
   justify-content: right;
   text-align     : right;
-  display        : flex;
   margin         : 0 auto;
   margin-top     : 10%;
   margin-left    : 10%;
   vertical-align : middle;
+}
+
+.leftWords a {
+  color: rgb(102, 178, 255);
 }
 
 .rightWords {
