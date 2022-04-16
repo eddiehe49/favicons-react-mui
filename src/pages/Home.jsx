@@ -189,7 +189,7 @@ function Home(params) {
             </svg>
           </div>
           <div style={{ width: "37.5%", float: "left", }}>
-            {localFavicons ? <p className="rightWords"><code> {localFavicons[index].likes}</code> folks like this avatar.
+            {localFavicons ? <p className="rightWords"><code> {localFavicons[index].likes}</code> folks like this favicon.
             </p> : <p className="rightWords"><strong>...</strong></p>}
           </div>
         </div>
