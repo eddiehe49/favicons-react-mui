@@ -65,7 +65,7 @@ function Home(params) {
       console.log("patch jsonplaceholder result =", result);
       localFavicons[index].likes += 1
       setIconName("Favorite")
-      enqueueSnackbar('Thank you for your like!', { variant: "success" })
+      enqueueSnackbar('Thanks for your thumbs up!', { variant: "success" })
       setTimeout(() => {
         setIconName("FavoriteBorder")
         console.log("2.5 s passed. Change Favorite to FavoriteBorder.")
@@ -103,7 +103,7 @@ function Home(params) {
       console.log("put jsonbin result =", result)
       localFavicons[index].likes += 1
       setIconName("Favorite")
-      enqueueSnackbar('Thank you for your like!', { variant: "success" })
+      enqueueSnackbar('Thanks for your thumbs up!', { variant: "success" })
       setTimeout(() => {
         setIconName("FavoriteBorder")
         console.log("2.5 s passed. Change Favorite to FavoriteBorder.")
@@ -140,7 +140,7 @@ function Home(params) {
       console.log("put krates result =", result)
       localFavicons[index].likes += 1
       setIconName("Favorite")
-      enqueueSnackbar('Thank you for your like!', { variant: "success" })
+      enqueueSnackbar('Thanks for your thumbs up!', { variant: "success" })
       setTimeout(() => {
         setIconName("FavoriteBorder")
         console.log("2.5 s passed. Change Favorite to FavoriteBorder.")
