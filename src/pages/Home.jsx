@@ -19,6 +19,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useSnackbar } from 'notistack';
+import Waline from '@waline/client';
 
 
 function Home(params) {
@@ -161,7 +162,7 @@ function Home(params) {
       putKratesFavicons()
     }
     else {
-      enqueueSnackbar('Wrong verification code!', { variant: "warning" });
+      enqueueSnackbar('Wrong verification code!', { variant: "warning" })
     }
   }
 
@@ -170,6 +171,17 @@ function Home(params) {
     // getJsonplaceholderFavicons()
     // getJsonbinFavicons()
     getKratesFavicons()
+    const locale = {
+      placeholder: "For a healthy network environment, comments will be displayed after review."
+    }
+    const waline = Waline({
+      el: "#waline",
+      serverURL: 'https://eddiehe-favicons-waline.vercel.app',
+      dark: 'auto',
+      lang: 'en',
+      locale,
+    })
+    waline.update()
   }, [])
 
   return (
@@ -193,7 +205,6 @@ function Home(params) {
             </p> : <p className="rightWords"><strong>...</strong></p>}
           </div>
         </div>
-
         <div className="cardHolder">
           <Box
             sx={{
@@ -260,6 +271,7 @@ function Home(params) {
           </Dialog>
         </div>
       </header>
+      <div id="waline" style={{ padding: "5% 20% 0 20%", backgroundColor: "#282c34" }}></div>
     </div >
   );
 }

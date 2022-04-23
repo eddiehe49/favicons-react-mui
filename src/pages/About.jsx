@@ -1,8 +1,23 @@
 import React from "react";
 import '../App.css';
-import logo from "../logo.svg"
+import logo from "../logo.svg";
+import { useEffect } from "react";
+import Waline from '@waline/client';
 
 function About(params) {
+    useEffect(() => {
+        const locale = {
+            placeholder: "Comments will be displayed after review for a healthy network environment."
+        }
+        const waline = Waline({
+            el: "#waline",
+            serverURL: 'https://eddiehe-favicons-waline.vercel.app',
+            dark: 'auto',
+            lang: 'en',
+            locale,
+        })
+        waline.update()
+    }, [])
     return (
         <div className="App">
             <header className="App-header">
@@ -44,6 +59,7 @@ function About(params) {
                     </a>
                 </p>
             </header>
+            <div id="waline" style={{ padding: "5% 20% 0 20%", backgroundColor: "#282c34" }}></div>
         </div >
     )
 }

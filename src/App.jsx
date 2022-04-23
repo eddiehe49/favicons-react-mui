@@ -257,7 +257,7 @@ export default function MiniDrawer() {
             </ListItemButton>
             <Collapse in={faviconsOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons.vercel.app/" rel="noopener noreferrer" disabled={useLocation().pathname === "/" ? "true" : null}>
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons.vercel.app/" rel="noopener noreferrer" disabled={useLocation().pathname === "/" ? true : null}>
                   <ListItemIcon>
                     <Brightness4Icon />
                   </ListItemIcon>
