@@ -45,15 +45,15 @@ function Home(params) {
   const getJsonplaceholderFavicons = () => {
     const getFavicons = async () => {
       let result = await Service.getJsonplaceholderFaviconsJson()
-      console.log("get jsonplaceholder result =", result);
+      console.log("get jsonplaceholder result: ", result);
       setLocalFavicons(result.data)
       setIconName("FavoriteBorder")
-      console.log("localFavicons from jsonplaceholder get =", localFavicons)
+      console.log("localFavicons from jsonplaceholder get: ", localFavicons)
     }
     getFavicons()
       .catch((error) => {
         enqueueSnackbar('Oops, something goes wrong!', { variant: "error" })
-        console.log("get jsonplaceholder error =", error)
+        console.log("get jsonplaceholder error: ", error)
       })
   };
 
@@ -62,7 +62,7 @@ function Home(params) {
       let result = await Service.patchJsonplaceholderFaviconsJson(index, {
         likes: localFavicons[index].likes + 1,
       })
-      console.log("patch jsonplaceholder result =", result);
+      console.log("patch jsonplaceholder result: ", result);
       localFavicons[index].likes += 1
       setIconName("Favorite")
       enqueueSnackbar('Thanks for your thumbs up!', { variant: "success" })
@@ -74,14 +74,14 @@ function Home(params) {
     patchFavicons()
       .catch((error) => {
         enqueueSnackbar('Oops, something goes wrong!', { variant: "error" })
-        console.log("patch jsonplaceholder error =", error)
+        console.log("patch jsonplaceholder error: ", error)
       });
   };
 
   const getJsonbinFavicons = () => {
     const getFavicons = async () => {
       let result = await Service.getJsonbinFaviconsJson()
-      console.log("get jsonbin result =", result);
+      console.log("get jsonbin result: ", result);
       setLocalFavicons(result.data.record.favicons)
       setIconName("FavoriteBorder")
       console.log("localFavicons: ", localFavicons)
@@ -100,7 +100,7 @@ function Home(params) {
     favicons[index].likes += 1;
     const putFavicons = async () => {
       let result = await Service.putJsonbinFaviconsJson({ favicons })
-      console.log("put jsonbin result =", result)
+      console.log("put jsonbin result: ", result)
       localFavicons[index].likes += 1
       setIconName("Favorite")
       enqueueSnackbar('Thanks for your thumbs up!', { variant: "success" })
@@ -112,22 +112,22 @@ function Home(params) {
     putFavicons()
       .catch((error) => {
         enqueueSnackbar('Oops, something goes wrong!', { variant: "error" })
-        console.log("put jsonbin error =", error)
+        console.log("put jsonbin error: ", error)
       });
   };
 
   const getKratesFavicons = () => {
     const getFavicons = async () => {
       let result = await Service.getKratesFaviconsJson()
-      console.log("get krates result =", result);
+      console.log("get krates result: ", result);
       setLocalFavicons(result.data[0].favicons)
       setIconName("FavoriteBorder")
-      console.log("localFavicons =", localFavicons)
+      console.log("localFavicons: ", localFavicons)
     }
     getFavicons()
       .catch((error) => {
         enqueueSnackbar('Oops, something goes wrong!', { variant: "error" })
-        console.log("get krates error =", error)
+        console.log("get krates error: ", error)
       });
   };
 
@@ -137,7 +137,7 @@ function Home(params) {
     favicons[index].likes += 1;
     const putFavicons = async () => {
       let result = await Service.putKratesFaviconsJson({ favicons })
-      console.log("put krates result =", result)
+      console.log("put krates result: ", result)
       localFavicons[index].likes += 1
       setIconName("Favorite")
       enqueueSnackbar('Thanks for your thumbs up!', { variant: "success" })
@@ -149,7 +149,7 @@ function Home(params) {
     putFavicons()
       .catch((error) => {
         enqueueSnackbar('Oops, something goes wrong!', { variant: "error" })
-        console.log("put krates error =", error)
+        console.log("put krates error: ", error)
       });
   };
 
@@ -187,7 +187,7 @@ function Home(params) {
   return (
     < div className="App" >
       <header className="App-header">
-        <div style={{ width: "100%", marginTop: "2%" }}>
+        <div style={{ width: "100%", paddingTop: "2%" }}>
           <div style={{ width: "37.5%", float: "left", }}>
             {localFavicons ? <p className="leftWords" dangerouslySetInnerHTML={{ __html: localFavicons[index].words }}>
             </p> : <p className="leftWords"><strong>Hold on please.</strong></p>}
@@ -221,7 +221,7 @@ function Home(params) {
             {localFavicons ? localFavicons.map((localFavicon) => (<Paper style={{ backgroundColor: localFavicon.fill, cursor: "pointer" }} key={localFavicon.id} id={localFavicon.id} onClick={paperClick}>{localFavicon.colorName}</Paper>)) : null}
           </Box>
         </div>
-        <div style={{ clear: "both", marginTop: "2%", marginBottom: "2%" }}>
+        <div style={{ clear: "both", padding: "2% 0 0% 0" }}>
           {localFavicons && iconName === "FavoriteBorder" ? <Tooltip title="Click Me!" arrow><FavoriteBorderOutlinedIcon sx={{ fontSize: 50 }} style={{ cursor: "pointer" }} onClick={() => { setDialogOpen(true) }} /></Tooltip> : null}
           {iconName === "Favorite" ? <FavoriteIcon sx={{ fontSize: 50 }} /> : null}
           {iconName === "CircularProgress" ? <CircularProgress /> : null}

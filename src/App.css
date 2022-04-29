@@ -45,13 +45,9 @@ code {
 }
 
 .leftWords {
-  padding-left   : 15%;
-  padding-right  : 5%;
   justify-content: right;
   text-align     : right;
-  margin         : 0 auto;
-  margin-top     : 10%;
-  margin-left    : 10%;
+  margin         : 10% 5% 0 15%;
   vertical-align : middle;
 }
 
@@ -60,11 +56,9 @@ code {
 }
 
 .rightWords {
-  padding-left   : 5%;
   justify-content: left;
   text-align     : left;
-  margin         : 0 auto;
-  margin-top     : 30%;
+  margin         : 30% 0 0 5%;
   vertical-align : middle;
 }
 
