@@ -1,11 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import Router from './Router';
 import reportWebVitals from './reportWebVitals';
 import { SnackbarProvider } from 'notistack';
 
-ReactDOM.render(
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <SnackbarProvider maxSnack={3} anchorOrigin={{
+//       vertical: 'top',
+//       horizontal: 'right',
+//     }}>
+//       <Router />
+//     </SnackbarProvider>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
+const container = document.getElementById('root')
+const root = createRoot(container)
+root.render(
   <React.StrictMode>
     <SnackbarProvider maxSnack={3} anchorOrigin={{
       vertical: 'top',
@@ -13,8 +28,7 @@ ReactDOM.render(
     }}>
       <Router />
     </SnackbarProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -19,7 +19,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useSnackbar } from 'notistack';
-import Waline from '@waline/client';
+import { init } from '@waline/client';
+import '@waline/client/dist/waline.css';
 
 
 function Home(params) {
@@ -176,7 +177,7 @@ function Home(params) {
     const locale = {
       placeholder: "For a healthy network environment, comments will be displayed after review."
     }
-    const waline = Waline({
+    const waline = init({
       el: "#waline",
       serverURL: 'https://eddiehe-favicons-waline.vercel.app',
       dark: 'auto',
@@ -213,7 +214,7 @@ function Home(params) {
             <ul>
               <li>There is a like button.<br />Give your preferred favicon a thumb up!</li>
               <br />
-              <li>Scroll down!<br />Have fun in the comment section. </li>
+              <li>Scroll down!<br />Have fun in the comment section.</li>
             </ul>
           </DialogContent>
           <DialogActions>

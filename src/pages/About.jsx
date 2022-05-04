@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import '../App.css';
 import logo from "../logo.svg";
 import { useEffect } from "react";
-import Waline from '@waline/client';
+import { init } from '@waline/client';
+import '@waline/client/dist/waline.css';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 
@@ -12,7 +13,7 @@ function About(params) {
         const locale = {
             placeholder: "Comments will be displayed after review for a healthy network environment."
         }
-        const waline = Waline({
+        const waline = init({
             el: "#waline",
             serverURL: 'https://eddiehe-favicons-waline.vercel.app',
             dark: 'auto',
@@ -25,7 +26,7 @@ function About(params) {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <Button onClick={() => { setDrawerOpen(true) }} variant="contained" style={{ margin: "2% 0 2% 0" }}>What are favicons?</Button>
+                {/* <Button onClick={() => { setDrawerOpen(true) }} variant="contained" style={{ margin: "2% 0 2% 0" }}>What are favicons?</Button> */}
                 <Drawer
                     anchor={'bottom'}
                     open={drawerOpen}
