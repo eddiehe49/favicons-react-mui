@@ -26,7 +26,9 @@ function Home(params) {
   const [localFavicons, setLocalFavicons] = useState()
   const [iconName, setIconName] = useState("FavoriteBorder")
   const [index, setIndex] = useState(0)
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [verificationDialogOpen, setVerificationDialogOpen] = useState(false);
+  const [faviconsDialogOpen, setFaviconsDialogOpen] = useState(true);
+  const [tipsDialogOpen, setTipsDialogOpen] = useState(false);
   const [selectValue, setSelectValue] = useState("");
   const { enqueueSnackbar } = useSnackbar();
 
@@ -156,7 +158,7 @@ function Home(params) {
   const confirmVarification = () => {
     if (selectValue === 1) {
       setIconName("CircularProgress")
-      setDialogOpen(false)
+      setVerificationDialogOpen(false)
       // patchJsonplaceholderFavicons()
       // putJsonbinFavicons()
       putKratesFavicons()
@@ -187,6 +189,37 @@ function Home(params) {
   return (
     < div className="App" >
       <header className="App-header">
+        <Dialog
+          fullWidth={true}
+          maxWidth="sm"
+          open={faviconsDialogOpen}
+        >
+          <DialogTitle>What are favicons?</DialogTitle>
+          <DialogContent>
+            <img src="faviconsIntroduction.jpg" alt="favicons introduction" height="100%" width="100%"></img>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => { setFaviconsDialogOpen(false) }}>Close</Button>
+            <Button onClick={() => { setTipsDialogOpen(true) }}>OK</Button>
+          </DialogActions>
+        </Dialog>
+        <Dialog
+          fullWidth={true}
+          maxWidth="xs"
+          open={tipsDialogOpen}
+        >
+          <DialogTitle>Tips</DialogTitle>
+          <DialogContent>
+            <ul>
+              <li>There is a like button.<br />Give your preferred favicon a thumb up!</li>
+              <br />
+              <li>Scroll down!<br />Have fun in the comment section. </li>
+            </ul>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => { setTipsDialogOpen(false); setFaviconsDialogOpen(false) }}>OK</Button>
+          </DialogActions>
+        </Dialog>
         <div style={{ width: "100%", paddingTop: "2%" }}>
           <div style={{ width: "37.5%", float: "left", }}>
             {localFavicons ? <p className="leftWords" dangerouslySetInnerHTML={{ __html: localFavicons[index].words }}>
@@ -222,7 +255,7 @@ function Home(params) {
           </Box>
         </div>
         <div style={{ clear: "both", padding: "2% 0 0% 0" }}>
-          {localFavicons && iconName === "FavoriteBorder" ? <Tooltip title="Click Me!" arrow><FavoriteBorderOutlinedIcon sx={{ fontSize: 50 }} style={{ cursor: "pointer" }} onClick={() => { setDialogOpen(true) }} /></Tooltip> : null}
+          {localFavicons && iconName === "FavoriteBorder" ? <Tooltip title="Click Me!" arrow><FavoriteBorderOutlinedIcon sx={{ fontSize: 50 }} style={{ cursor: "pointer" }} onClick={() => { setVerificationDialogOpen(true) }} /></Tooltip> : null}
           {iconName === "Favorite" ? <FavoriteIcon sx={{ fontSize: 50 }} /> : null}
           {iconName === "CircularProgress" ? <CircularProgress /> : null}
         </div>
@@ -230,8 +263,8 @@ function Home(params) {
           <Dialog
             fullWidth={true}
             maxWidth="xs"
-            open={dialogOpen}
-            onClose={() => { setDialogOpen(false) }}
+            open={verificationDialogOpen}
+            onClose={() => { setVerificationDialogOpen(false) }}
           >
             <DialogTitle>Verification</DialogTitle>
             <DialogContent>
@@ -265,7 +298,7 @@ function Home(params) {
               </Box>
             </DialogContent>
             <DialogActions>
-              <Button onClick={() => { setDialogOpen(false) }}>Close</Button>
+              <Button onClick={() => { setVerificationDialogOpen(false) }}>Close</Button>
               <Button onClick={confirmVarification}>Confirm</Button>
             </DialogActions>
           </Dialog>

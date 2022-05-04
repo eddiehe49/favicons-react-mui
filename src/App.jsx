@@ -195,7 +195,7 @@ export default function MiniDrawer() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Eddie He's Favicons
+              Eddie's Favicons
             </Typography>
           </Toolbar>
         </AppBar>
@@ -212,18 +212,18 @@ export default function MiniDrawer() {
               <ListItemIcon>
                 <AddReactionIcon />
               </ListItemIcon>
-              <ListItemText primary="Avatars" />
+              <ListItemText primary="Profile Pictures" />
               {avatarsOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={avatarsOpen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-avatars-darkmode.vercel.app/" rel="noopener noreferrer">
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-profile-pictures-darkmode.vercel.app/" rel="noopener noreferrer">
                   <ListItemIcon>
                     <BedtimeIcon />
                   </ListItemIcon>
                   <ListItemText primary="DarkMode" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-avatars-lightmode.onrender.com/" rel="noopener noreferrer">
+                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-profile-pictures-lightmode.onrender.com/" rel="noopener noreferrer">
                   <ListItemIcon>
                     <LightModeIcon />
                   </ListItemIcon>
@@ -238,7 +238,7 @@ export default function MiniDrawer() {
                 </ListItemButton>
                 <Collapse in={avatarsJsonOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 6 }} component="a" href="https://my-json-server.typicode.com/eddiehe49/avatars-json/" target="_blank" rel="noopener noreferrer">
+                    <ListItemButton sx={{ pl: 6 }} component="a" href="https://my-json-server.typicode.com/eddiehe49/profile-pictures/" target="_blank" rel="noopener noreferrer">
                       <ListItemIcon>
                         <DataObjectIcon />
                       </ListItemIcon>
@@ -284,7 +284,7 @@ export default function MiniDrawer() {
                 </ListItemButton>
                 <Collapse in={faviconsJsonOpen} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 6 }} component="a" href="http://my-json-server.typicode.com/Eddie-He-090/favicons-json" target="_blank" rel="noopener noreferrer">
+                    <ListItemButton sx={{ pl: 6 }} component="a" href="http://my-json-server.typicode.com/Eddie-He-090/favicons/" target="_blank" rel="noopener noreferrer">
                       <ListItemIcon>
                         <PermDataSettingIcon />
                       </ListItemIcon>
