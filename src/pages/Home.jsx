@@ -28,8 +28,6 @@ function Home(params) {
   const [iconName, setIconName] = useState("FavoriteBorder")
   const [index, setIndex] = useState(0)
   const [verificationDialogOpen, setVerificationDialogOpen] = useState(false);
-  const [faviconsDialogOpen, setFaviconsDialogOpen] = useState(true);
-  const [tipsDialogOpen, setTipsDialogOpen] = useState(false);
   const [selectValue, setSelectValue] = useState("");
   const { enqueueSnackbar } = useSnackbar();
 
@@ -190,37 +188,6 @@ function Home(params) {
   return (
     < div className="App" >
       <header className="App-header">
-        <Dialog
-          fullWidth={true}
-          maxWidth="sm"
-          open={faviconsDialogOpen}
-        >
-          <DialogTitle>What are favicons?</DialogTitle>
-          <DialogContent>
-            <img src="faviconsIntroduction.jpg" alt="favicons introduction" height="100%" width="100%"></img>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => { setFaviconsDialogOpen(false) }}>Close</Button>
-            <Button onClick={() => { setTipsDialogOpen(true) }}>OK</Button>
-          </DialogActions>
-        </Dialog>
-        <Dialog
-          fullWidth={true}
-          maxWidth="xs"
-          open={tipsDialogOpen}
-        >
-          <DialogTitle>Tips</DialogTitle>
-          <DialogContent>
-            <ul>
-              <li>There is a like button.<br />Give your preferred favicon a thumb up!</li>
-              <br />
-              <li>Scroll down!<br />Have fun in the comment section.</li>
-            </ul>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => { setTipsDialogOpen(false); setFaviconsDialogOpen(false) }}>OK</Button>
-          </DialogActions>
-        </Dialog>
         <div style={{ width: "100%", paddingTop: "2%" }}>
           <div style={{ width: "37.5%", float: "left", }}>
             {localFavicons ? <p className="leftWords" dangerouslySetInnerHTML={{ __html: localFavicons[index].words }}>

@@ -18,6 +18,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PropTypes from 'prop-types';
 import Collapse from '@mui/material/Collapse';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -110,6 +115,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+export const faviconsIntroductionDialog = React.createContext()
+
 export default function MiniDrawer() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [avatarsOpen, setAvatarsOpen] = React.useState(false);
@@ -118,6 +125,9 @@ export default function MiniDrawer() {
   const [faviconsJsonOpen, setFaviconsJsonOpen] = React.useState(false);
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const [faviconsIntroductionDialogOpen, setFaviconsIntroductionDialogOpen] = React.useState(true);
+  const [tipsDialogOpen, setTipsDialogOpen] = React.useState(false);
 
   const theme = React.useMemo(
     () =>
@@ -177,131 +187,164 @@ export default function MiniDrawer() {
 
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="fixed" open={drawerOpen}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => { setDrawerOpen(true) }}
-              edge="start"
-              sx={{
-                marginRight: 5,
-                ...(drawerOpen && { display: 'none' }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Eddie's Favicons
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" open={drawerOpen}>
-          <DrawerHeader>
-            <IconButton onClick={() => { setDrawerOpen(false) }}>
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-            </IconButton>
-          </DrawerHeader>
-          <Divider />
-          <List>
-            <ListItemLink to="/" primary="Home" icon={<ChairIcon />} />
-            <ListItemButton onClick={() => { setAvatarsOpen(!avatarsOpen) }}>
-              <ListItemIcon>
-                <AddReactionIcon />
-              </ListItemIcon>
-              <ListItemText primary="Profile Pictures" />
-              {avatarsOpen ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={avatarsOpen} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-profile-pictures-darkmode.vercel.app/" rel="noopener noreferrer">
-                  <ListItemIcon>
-                    <BedtimeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="DarkMode" />
-                </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-profile-pictures-lightmode.onrender.com/" rel="noopener noreferrer">
-                  <ListItemIcon>
-                    <LightModeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="LightMode" />
-                </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} onClick={() => { setAvatarsJsonOpen(!avatarsJsonOpen) }}>
-                  <ListItemIcon>
-                    <FolderZipIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="JSON" />
-                  {avatarsJsonOpen ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={avatarsJsonOpen} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 6 }} component="a" href="https://my-json-server.typicode.com/eddiehe49/profile-pictures/" target="_blank" rel="noopener noreferrer">
-                      <ListItemIcon>
-                        <DataObjectIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="JSONPlaceholder" />
-                    </ListItemButton>
-                  </List>
-                </Collapse>
-              </List>
-            </Collapse>
-            <ListItemButton onClick={() => { setFaviconsOpen(!faviconsOpen) }}>
-              <ListItemIcon>
-                <FaceRetouchingNaturalIcon />
-              </ListItemIcon>
-              <ListItemText primary="Favicons" />
-              {faviconsOpen ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={faviconsOpen} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons.vercel.app/" rel="noopener noreferrer" disabled={useLocation().pathname === "/" ? true : null}>
-                  <ListItemIcon>
-                    <Brightness4Icon />
-                  </ListItemIcon>
-                  <ListItemText primary="Auto" />
-                </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons-darkmode.vercel.app/" rel="noopener noreferrer">
-                  <ListItemIcon>
-                    <Brightness2Icon />
-                  </ListItemIcon>
-                  <ListItemText primary="DarkMode" />
-                </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons-lightmode.onrender.com/" rel="noopener noreferrer">
-                  <ListItemIcon>
-                    <BrightnessHighIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="LightMode" />
-                </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }} onClick={() => { setFaviconsJsonOpen(!faviconsJsonOpen) }}>
-                  <ListItemIcon>
-                    <SavingsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="JSON" />
-                  {faviconsJsonOpen ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={faviconsJsonOpen} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    <ListItemButton sx={{ pl: 6 }} component="a" href="http://my-json-server.typicode.com/Eddie-He-090/favicons/" target="_blank" rel="noopener noreferrer">
-                      <ListItemIcon>
-                        <PermDataSettingIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="JSONPlaceholder" />
-                    </ListItemButton>
-                  </List>
-                </Collapse>
-              </List>
-            </Collapse>
-            <ListItemLink to="/about" primary="About" icon={<SignLanguageIcon />} disabled={useLocation().pathname === "/about" ? true : false} />
-          </List>
-        </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <DrawerHeader />
-          <Outlet></Outlet>
+    <faviconsIntroductionDialog.Provider value={{ setFaviconsIntroductionDialogOpen }}>
+      <ThemeProvider theme={theme}>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <AppBar position="fixed" open={drawerOpen}>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => { setDrawerOpen(true) }}
+                edge="start"
+                sx={{
+                  marginRight: 5,
+                  ...(drawerOpen && { display: 'none' }),
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" noWrap component="div">
+                Eddie's Favicons
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Drawer variant="permanent" open={drawerOpen}>
+            <DrawerHeader>
+              <IconButton onClick={() => { setDrawerOpen(false) }}>
+                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+              </IconButton>
+            </DrawerHeader>
+            <Divider />
+            <List>
+              <ListItemLink to="/" primary="Home" icon={<ChairIcon />} />
+              <ListItemButton onClick={() => { setAvatarsOpen(!avatarsOpen) }}>
+                <ListItemIcon>
+                  <AddReactionIcon />
+                </ListItemIcon>
+                <ListItemText primary="Profile Pictures" />
+                {avatarsOpen ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={avatarsOpen} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-profile-pictures-darkmode.vercel.app/" rel="noopener noreferrer">
+                    <ListItemIcon>
+                      <BedtimeIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="DarkMode" />
+                  </ListItemButton>
+                  <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-profile-pictures-lightmode.onrender.com/" rel="noopener noreferrer">
+                    <ListItemIcon>
+                      <LightModeIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="LightMode" />
+                  </ListItemButton>
+                  <ListItemButton sx={{ pl: 4 }} onClick={() => { setAvatarsJsonOpen(!avatarsJsonOpen) }}>
+                    <ListItemIcon>
+                      <FolderZipIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="JSON" />
+                    {avatarsJsonOpen ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemButton>
+                  <Collapse in={avatarsJsonOpen} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                      <ListItemButton sx={{ pl: 6 }} component="a" href="https://my-json-server.typicode.com/eddiehe49/profile-pictures/" target="_blank" rel="noopener noreferrer">
+                        <ListItemIcon>
+                          <DataObjectIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="JSONPlaceholder" />
+                      </ListItemButton>
+                    </List>
+                  </Collapse>
+                </List>
+              </Collapse>
+              <ListItemButton onClick={() => { setFaviconsOpen(!faviconsOpen) }}>
+                <ListItemIcon>
+                  <FaceRetouchingNaturalIcon />
+                </ListItemIcon>
+                <ListItemText primary="Favicons" />
+                {faviconsOpen ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={faviconsOpen} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons.vercel.app/" rel="noopener noreferrer" disabled={useLocation().pathname === "/" ? true : null}>
+                    <ListItemIcon>
+                      <Brightness4Icon />
+                    </ListItemIcon>
+                    <ListItemText primary="Auto" />
+                  </ListItemButton>
+                  <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons-darkmode.vercel.app/" rel="noopener noreferrer">
+                    <ListItemIcon>
+                      <Brightness2Icon />
+                    </ListItemIcon>
+                    <ListItemText primary="DarkMode" />
+                  </ListItemButton>
+                  <ListItemButton sx={{ pl: 4 }} component="a" href="https://eddiehe-favicons-lightmode.onrender.com/" rel="noopener noreferrer">
+                    <ListItemIcon>
+                      <BrightnessHighIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="LightMode" />
+                  </ListItemButton>
+                  <ListItemButton sx={{ pl: 4 }} onClick={() => { setFaviconsJsonOpen(!faviconsJsonOpen) }}>
+                    <ListItemIcon>
+                      <SavingsIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="JSON" />
+                    {faviconsJsonOpen ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemButton>
+                  <Collapse in={faviconsJsonOpen} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                      <ListItemButton sx={{ pl: 6 }} component="a" href="http://my-json-server.typicode.com/Eddie-He-090/favicons/" target="_blank" rel="noopener noreferrer">
+                        <ListItemIcon>
+                          <PermDataSettingIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="JSONPlaceholder" />
+                      </ListItemButton>
+                    </List>
+                  </Collapse>
+                </List>
+              </Collapse>
+              <ListItemLink to="/about" primary="About" icon={<SignLanguageIcon />} disabled={useLocation().pathname === "/about" ? true : false} />
+            </List>
+          </Drawer>
+          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <DrawerHeader />
+            <Outlet></Outlet>
+          </Box>
         </Box>
-      </Box>
-    </ThemeProvider>
+        <Dialog
+          fullWidth={true}
+          maxWidth="sm"
+          open={faviconsIntroductionDialogOpen}
+        >
+          <DialogTitle>What are favicons?</DialogTitle>
+          <DialogContent>
+            <img src="faviconsIntroduction.jpg" alt="favicons introduction" height="100%" width="100%"></img>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => { setFaviconsIntroductionDialogOpen(false) }}>Close</Button>
+            <Button onClick={() => { setTipsDialogOpen(true) }}>OK</Button>
+          </DialogActions>
+        </Dialog>
+        <Dialog
+          fullWidth={true}
+          maxWidth="xs"
+          open={tipsDialogOpen}
+        >
+          <DialogTitle>Tips</DialogTitle>
+          <DialogContent>
+            <ul>
+              <li><span style={{ fontSize: "medium", fontWeight: "bold" }}>There is a like button.</span><br />Give your preferred favicon a thumb up!</li>
+              <br />
+              <li><span style={{ fontSize: "medium", fontWeight: "bold" }}>Scroll down!</span><br />Have fun in the comment section.</li>
+            </ul>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => { setTipsDialogOpen(false); setFaviconsIntroductionDialogOpen(false) }}>OK</Button>
+          </DialogActions>
+        </Dialog>
+      </ThemeProvider>
+    </faviconsIntroductionDialog.Provider>
   );
 }

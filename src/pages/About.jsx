@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import '../App.css';
 import logo from "../logo.svg";
 import { useEffect } from "react";
 import { init } from '@waline/client';
 import '@waline/client/dist/waline.css';
-import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
+import { faviconsIntroductionDialog } from "../App";
 
 function About(params) {
-    const [drawerOpen, setDrawerOpen] = useState(false)
+    const { setFaviconsIntroductionDialogOpen } = useContext(faviconsIntroductionDialog)
+
     useEffect(() => {
         const locale = {
             placeholder: "Comments will be displayed after review for a healthy network environment."
@@ -22,27 +23,12 @@ function About(params) {
         })
         waline.update()
     }, [])
+
     return (
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                {/* <Button onClick={() => { setDrawerOpen(true) }} variant="contained" style={{ margin: "2% 0 2% 0" }}>What are favicons?</Button> */}
-                <Drawer
-                    anchor={'bottom'}
-                    open={drawerOpen}
-                    onClose={() => { setDrawerOpen(false) }}
-                >
-                    <p style={{ margin: "0 auto", padding: "0 0 2% 0" }}>
-                        <br />
-                        Check out this <a href="https://eddiehe.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: "#757de8" }}>
-                            site
-                        </a> on your desktop browser.
-                        <br />
-                        Do you see the tiny icon in the left of the tab?
-                        <br />
-                        That's a favicon!
-                    </p>
-                </Drawer>
+                <Button onClick={() => { setFaviconsIntroductionDialogOpen(true) }} variant="contained" style={{ margin: "2% 0 2% 0" }}>What are favicons?</Button>
                 <p>
                     Powerd by&nbsp;
                     <a className="App-link" href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
