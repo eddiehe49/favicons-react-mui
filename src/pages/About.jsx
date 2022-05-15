@@ -30,7 +30,7 @@ function About(params) {
                 <img src={logo} className="App-logo" alt="logo" />
                 <Button onClick={() => { setFaviconsIntroductionDialogOpen(true) }} variant="contained" style={{ margin: "2% 0 2% 0" }}>What are favicons?</Button>
                 <p>
-                    Powerd by&nbsp;
+                    Powered by&nbsp;
                     <a className="App-link" href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
                         React
                     </a>
