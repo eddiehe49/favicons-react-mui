@@ -1,22 +1,9 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import Router from './Router';
 import reportWebVitals from './reportWebVitals';
 import { SnackbarProvider } from 'notistack';
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <SnackbarProvider maxSnack={3} anchorOrigin={{
-//       vertical: 'top',
-//       horizontal: 'right',
-//     }}>
-//       <Router />
-//     </SnackbarProvider>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
 
 const root = createRoot(document.getElementById('root'))
 root.render(
