@@ -173,8 +173,8 @@ function Home(params) {
               flexWrap: 'wrap',
               '& > :not(style)': {
                 m: 1,
-                width: 128,
-                height: 128,
+                width: 190,
+                height: 96,
                 p: 1
               },
             }}
