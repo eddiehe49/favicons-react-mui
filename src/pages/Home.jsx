@@ -79,44 +79,6 @@ function Home(params) {
       });
   };
 
-  const getJsonbinFavicons = () => {
-    const getFavicons = async () => {
-      let result = await Service.getJsonbinFaviconsJson()
-      console.log("get jsonbin result: ", result);
-      setLocalFavicons(result.data.record.favicons)
-      setIconName("FavoriteBorder")
-      console.log("localFavicons: ", localFavicons)
-    }
-    getFavicons()
-      .catch((error) => {
-        enqueueSnackbar('Oops, something goes wrong!', { variant: "error" })
-        console.log("get jsonbin error: ", error)
-      });
-  };
-
-  const putJsonbinFavicons = () => {
-    // In Vue, coould not do (let tempFavicons=this.localFavicons), as tempFavicons will sync with this.localFavicons
-    let tempFavicons = JSON.stringify(localFavicons);
-    let favicons = JSON.parse(tempFavicons);
-    favicons[index].likes += 1;
-    const putFavicons = async () => {
-      let result = await Service.putJsonbinFaviconsJson({ favicons })
-      console.log("put jsonbin result: ", result)
-      localFavicons[index].likes += 1
-      setIconName("Favorite")
-      enqueueSnackbar('Thanks for your thumbs up!', { variant: "success" })
-      setTimeout(() => {
-        setIconName("FavoriteBorder")
-        console.log("2.5 s passed. Change Favorite to FavoriteBorder.")
-      }, 2500);
-    }
-    putFavicons()
-      .catch((error) => {
-        enqueueSnackbar('Oops, something goes wrong!', { variant: "error" })
-        console.log("put jsonbin error: ", error)
-      });
-  };
-
   const getKratesFavicons = () => {
     const getFavicons = async () => {
       let result = await Service.getKratesFaviconsJson()
@@ -159,7 +121,6 @@ function Home(params) {
       setIconName("CircularProgress")
       setVerificationDialogOpen(false)
       // patchJsonplaceholderFavicons()
-      // putJsonbinFavicons()
       putKratesFavicons()
     }
     else {
@@ -170,7 +131,6 @@ function Home(params) {
   useEffect(() => {
     setIconName("CircularProgress")
     // getJsonplaceholderFavicons()
-    // getJsonbinFavicons()
     getKratesFavicons()
     const locale = {
       placeholder: "For a healthy network environment, comments will be displayed after review."
