@@ -9,19 +9,19 @@ const jsonplaceholderApiClient = axios.create({
     }
 })
 const jsonbinApiClient = axios.create({
-    baseURL: "https://api.jsonbin.io/v3/b/" + process.env.REACT_APP_BIN_ID,
+    baseURL: 'https://api.jsonbin.io/v3/b/' + process.env.REACT_APP_BIN_ID,
     withCredentials: false,
     headers: {
-        "X-Master-Key": "$2b$10$Dr3C03m96HY3V014" + process.env.REACT_APP_X_Master_Key,
+        'X-Master-Key': '$2b$10$Dr3C03m96HY3V014' + process.env.REACT_APP_X_Master_Key,
         Accept: 'application/json',
         'Content-Type': 'application/json'
     }
 })
 const kratesApiClient = axios.create({
-    baseURL: "https://krat.es/" + process.env.REACT_APP_Krate_ID,
+    baseURL: 'https://krat.es/' + process.env.REACT_APP_Krates_ID,
     withCredentials: false,
     headers: {
-        "x-api-key": process.env.REACT_APP_x_api_key,
+        'x-api-key': process.env.REACT_APP_Krates_Krates_x_api_key,
         Accept: 'application/json',
         'Content-Type': 'application/json'
     }
@@ -40,10 +40,10 @@ const putJsonbinFaviconsJson = (favicons) => {
     return jsonbinApiClient.put('', favicons)
 }
 const getKratesFaviconsJson = () => {
-    return kratesApiClient.get("/record/624b08405a015dc4d2223b2f")
+    return kratesApiClient.get('/record/' + process.env.REACT_APP_Krates_record)
 }
 const putKratesFaviconsJson = (favicons) => {
-    return kratesApiClient.put('/624b08405a015dc4d2223b2f', favicons)
+    return kratesApiClient.put('/' + process.env.REACT_APP_Krates_record, favicons)
 };
 
 const Service = { getJsonplaceholderFaviconsJson, patchJsonplaceholderFaviconsJson, getJsonbinFaviconsJson, putJsonbinFaviconsJson, getKratesFaviconsJson, putKratesFaviconsJson }
